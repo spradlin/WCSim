@@ -52,7 +52,6 @@ public:
 protected:
   void ReInitialize() { DigiStoreHitMap.clear(); }
 
-  G4double peSmeared;
 
   WCSimDetectorConstruction* myDetector; ///< Get the geometry information
   WCSimWCDAQMessenger* DAQMessenger;     ///< Get the /DAQ/ .mac options

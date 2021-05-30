@@ -23,8 +23,8 @@ WCSimWCDigitizerBase::WCSimWCDigitizerBase(G4String name,
 										   WCSimDetectorConstruction* inDetector,
 										   WCSimWCDAQMessenger* myMessenger,
 										   DigitizerType_t digitype,
-										   G4String detectorElement)
-  :G4VDigitizerModule(name), myDetector(inDetector), DAQMessenger(myMessenger), DigitizerType(digitype),DigitizerClassName(""), detectorElement(detectorElement)
+										   G4String detElem)
+  :G4VDigitizerModule(name), myDetector(inDetector), DAQMessenger(myMessenger), DigitizerClassName(""),DigitizerType(digitype), detectorElement(detElem)
 {
   // G4String colName = "WCDigitizedStoreCollection";
   G4String colName;
@@ -186,10 +186,10 @@ void WCSimWCDigitizerBase::SaveOptionsToOutput(WCSimRootOptions * wcopt)
 // *******************************************
 
 WCSimWCDigitizerSKI::WCSimWCDigitizerSKI(G4String name,
-                                         WCSimDetectorConstruction* myDetector,
+                                         WCSimDetectorConstruction* inDetector,
                                          WCSimWCDAQMessenger* myMessenger,
-                                         G4String detectorElement)
-  : WCSimWCDigitizerBase(name, myDetector, myMessenger, kDigitizerSKI, detectorElement)
+                                         G4String detElem)
+  : WCSimWCDigitizerBase(name, inDetector, myMessenger, kDigitizerSKI, detElem)
 {
   DigitizerClassName = "SKI";
   GetVariables();
@@ -247,6 +247,7 @@ void WCSimWCDigitizerSKI::DigitizeHits(WCSimWCDigitsCollection* WCHCPMT) {
       double intgr_start=0;
       double upperlimit=0;
       G4double efficiency = 0.985; // with skrn1pe (AP tuning) & 30% QE increase in stacking action
+      G4double peSmeared;
 
       // Variables to store photon uniqueid that make up a digit
       int digi_unique_id   = 0;
