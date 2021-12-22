@@ -1448,7 +1448,7 @@ G4double* BoxandLine20inchHQE::Getqpe()
   return qpe0;
 }
 G4double* BoxandLine20inchHQE::GetQEWavelength(){
-  static G4double wavelength_value[20] = { 280., 300., 320., 340., 360., 380., 400., 420., 440., 460., 480., 500., 520., 540., 560., 580., 600., 620., 640., 660.};
+  static G4double wavelength_value[20] = { 285., 305., 325., 345., 365., 385., 405., 425., 445., 465., 485., 505., 525., 545., 565., 585., 605., 625., 645., 665.};
   return wavelength_value;
 }
 
