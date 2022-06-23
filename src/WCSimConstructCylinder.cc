@@ -110,6 +110,8 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
 
   //TF: need to add a Polyhedra on the other side of the outerAnnulusRadius for the OD
   outerAnnulusRadius = WCIDRadius + WCBlackSheetThickness + 1.*mm;//+ Stealstructure etc.
+  WCLength    = WCIDHeight + 2*2.3*m;   //jl145 - reflects top veto blueprint, cf. Farshid Feyzi
+  WCRadius    = (WCIDDiameter/2. + WCBlackSheetThickness + 1.5*m)/cos(dPhi/2.) ;
   if(isODConstructed){
     G4double sphereRadius =
 	  (WCPMTODExposeHeight*WCPMTODExposeHeight+ WCPMTODRadius*WCPMTODRadius)/(2*WCPMTODExposeHeight);
@@ -117,6 +119,9 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
 	  WCIDRadius + WCBlackSheetThickness + WCODDeadSpace + // ID Structure
 	  WCODTyvekSheetThickness + // Tyvek attached to structure
 	  sphereRadius; // PMT height
+    WCLength    = WCIDHeight + 2*(WCODHeightWaterDepth + WCBlackSheetThickness
+                  + WCODDeadSpace + WCODTyvekSheetThickness);
+    WCRadius    = (outerAnnulusRadius + WCODLateralWaterDepth)/cos(dPhi/2.) ;
   }
 
   // the radii are measured to the center of the surfaces
@@ -128,8 +133,6 @@ G4LogicalVolume* WCSimDetectorConstruction::ConstructCylinder()
   WCODHeightWaterDepth = 2*m + 0.6*m;//OD + support structure
   WCODLateralWaterDepth = 1*m + 0.6*m;//OD + support structure
   */
-  WCLength    = WCIDHeight + 2*(WCODHeightWaterDepth + WCBlackSheetThickness + WCODDeadSpace + WCODTyvekSheetThickness);
-  WCRadius    = (outerAnnulusRadius + WCODLateralWaterDepth)/cos(dPhi/2.) ;
   //WCLength    = WCIDHeight + (WCODHeight+WCOuterStructure)*2;	//jl145 - reflects top veto blueprint, cf. Farshid Feyzi
   //WCRadius    = (WCIDDiameter/2. + WCBlackSheetThickness + (WCODRadius+WCODHeight)))/cos(dPhi/2.) ; // BQ: Updated with new HK OD size (2020/12/06) 
   //WCLength    = WCIDHeight + 2*2.3*m;	//jl145 - reflects top veto blueprint, cf. Farshid Feyzi
