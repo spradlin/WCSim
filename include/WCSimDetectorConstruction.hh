@@ -463,6 +463,7 @@ private:
 
   // The Construction routines
   G4LogicalVolume*   ConstructCylinder();
+  G4LogicalVolume*   ConstructCylinderOrig();
 
   G4LogicalVolume* ConstructPMT(G4String,G4String,G4String detectorElement="tank",G4int nIDPMTs=1);//Modified by B.Quilain 2018/12 to implement hybrid detector
   G4LogicalVolume* ConstructMultiPMT(G4String,G4String, G4String detectorElement="tank",G4int nIDPMTs=1); 
@@ -471,6 +472,7 @@ private:
   G4LogicalVolume* ConstructPMTAndWLSPlate(G4String,G4String,G4String detectorElement="OD");
 
   G4LogicalVolume* ConstructCaps(G4int zflip);
+  G4LogicalVolume* ConstructCapsOrig(G4int zflip);
 
   void  ConstructMaterials();
 

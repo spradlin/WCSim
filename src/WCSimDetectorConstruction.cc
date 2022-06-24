@@ -253,8 +253,12 @@ G4VPhysicalVolume* WCSimDetectorConstruction::Construct()
   G4LogicalVolume* logicWCBox;
 
   // Select between HyperK and cylinder
-  if (isEggShapedHyperK) logicWCBox = ConstructEggShapedHyperK();
-  else logicWCBox = ConstructCylinder(); 
+  if (isEggShapedHyperK)
+    logicWCBox = ConstructEggShapedHyperK();
+  else if (WCDetectorName == "HyperKWithOD")
+    logicWCBox = ConstructCylinderOrig(); 
+  else 
+    logicWCBox = ConstructCylinder(); 
   
   if(!logicWCBox){
     G4cerr << "Something went wrong in ConstructCylinder" << G4endl;
