@@ -592,7 +592,7 @@ void WCSimDetectorConstruction::ConstructMaterials()
    // back to the old value 1.55
 
    
-   /* TF: UNPHYSICAL 
+   // TF: UNPHYSICAL 
       G4double RINDEX_glass[NUMENTRIES_water] =
      { 1.600, 1.600, 1.600, 1.600, 1.600, 1.600, 1.600,
        1.600, 1.600, 1.600, 1.600, 1.600, 1.600, 1.600,
@@ -603,9 +603,9 @@ void WCSimDetectorConstruction::ConstructMaterials()
        1.600, 1.600, 1.600, 1.600, 1.600, 1.600, 1.600,
        1.600, 1.600, 1.600, 1.600, 1.600, 1.600, 1.600,
        1.600, 1.600 }; 
-   */
+   //
 
-   // Based on analytical formula from http://refractiveindex.info/?shelf=glass&book=HIKARI-BK&page=J-BK7A for Borosilicate glass 
+   /* Based on analytical formula from http://refractiveindex.info/?shelf=glass&book=HIKARI-BK&page=J-BK7A for Borosilicate glass 
    G4double RINDEX_glass[NUMENTRIES_water] =
      { 1.5110, 1.5112, 1.5114, 1.5116, 1.5118, 
        1.5121, 1.5123, 1.5126, 1.5128, 1.5131, 
@@ -619,7 +619,7 @@ void WCSimDetectorConstruction::ConstructMaterials()
        1.5414, 1.5438, 1.5465, 1.5495, 1.5528, 
        1.5566, 1.5608, 1.5657, 1.5713, 1.5777, 
        1.5853, 1.5941, 1.6047, 1.6173, 1.6328 }; 
-   
+   */
 
    //G4double RINDEX_blacksheet[NUMENTRIES] =
    //{ 2.500, 2.500, 2.500, 2.500, 2.500, 2.500, 2.500,
