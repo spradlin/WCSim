@@ -39,8 +39,9 @@ namespace {     // Anonymous namespace for local helper functions and classes
   std::string usage_statement(const std::string exename) {
     std::stringstream msg;
 #ifdef G4UI_USE
-    msg << "interactive usage: " << exename << "\n"
-        << "    No command-line arguments.  An interactive UI will be launched after setup.\n\n";
+    msg << "interactive usage: " << exename << " visualization_macro\n"
+        << "    visualization_macro:  name of a macro file that sets up the visualization\n"
+        << "An interactive UI will be launched after visualization_macro is executed.\n\n";
 #else
     msg << "Not built for interactive use.\n\n";
 #endif
@@ -75,7 +76,7 @@ int main(int argc,char** argv)
   // Check arguments, set execution mode and perform some prep.
   switch(argc) {
 #ifdef G4UI_USE
-    case 1 :    // Interactive mode with no command-line arguments
+    case 2 :    // Interactive mode with no command-line arguments
       exemode = WCSimExeMode::Interactive;
       G4cout << "Entering interactive mode after setup." << G4endl;
       G4cout << "Using default tuning parameters." << G4endl;
@@ -176,6 +177,8 @@ int main(int argc,char** argv)
 #ifdef G4UI_USE
       // Launch the interactive UI
       G4UIExecutive * ui = new G4UIExecutive(argc,argv);
+      G4cout << "Running visualization initialization macro " << argv[1] << G4endl;
+      UI->ApplyCommand(execommand + G4String(argv[1]));
       ui->SessionStart();
 
       // Clean it up on exit
